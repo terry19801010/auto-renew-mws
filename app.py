@@ -55,7 +55,7 @@ def send_tg_notification(message: str):
 
     try:
         resp = requests.post(
-            url, json=payload, timeout=10, impersonate="chrome", proxies=build_proxies()
+            url, json=payload, timeout=10, proxies=build_proxies()
         )
         if resp.status_code == 200:
             print("✅ TG 通知发送成功")
@@ -404,7 +404,7 @@ def main():
 
     # ---------- 最后统一发送一次 TG 通知 ----------
     local_time = time.gmtime(time.time() + 8 * 3600)
-    current_tim = time.strftime("%Y-%m-%d %H:%M:%S", local_time)
+    current_time = time.strftime("%Y-%m-%d %H:%M:%S", local_time)
     lines = ["🇯🇵 MWS 续期通知\n"]
     if all_ok:
         lines.append("✅ 全部续期成功")
